@@ -1,0 +1,43 @@
+* {
+  padding: 0%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/*
+    GAMEPLAY STYLING
+*/
+
+
+
+/*
+Progress Bar Styling
+*/
+.progress-bar-container {
+  margin: 0;
+  padding:0.25rem;
+  width: 200px;
+  height: 25px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.progress-bar-container.small {
+    height:12px;
+}
+
+.progress-bar-container.big {
+    height:50px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+}
