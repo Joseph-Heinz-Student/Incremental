@@ -3,6 +3,7 @@ class ProgressBar {
     this.value = value;
     this.max = max;
     this.element = element;
+    this.active = false;
   }
 
   setWidth() {

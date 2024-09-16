@@ -5,6 +5,10 @@ const game = {
 };
 
 function progressBar(time, bar) {
+  if (bar.active) return;
+
+  bar.active = true;
+
   let interval = 50;
   let runs = 0;
 
@@ -48,6 +52,7 @@ function progressBar(time, bar) {
           ( abs((time - elapsed) / ((time + elapsed) / 2)) * 100 ).toString().substring(0,6)
         }% Variance`
       );
+      bar.active = false;
     }
   }, interval);
 }
