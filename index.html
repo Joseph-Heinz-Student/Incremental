@@ -9,13 +9,16 @@
 <body>
     <main>
         <h1>resources</h1>
+        <h2 id="rock-counter">Rock: 0</h2>
         <div class="progress-bar-container">
             <div id="test" class="progress-bar" style="--bg-color:#ff0000;" data-value="100" data-max="100"></div>
         </div>
         <button onclick="mine('rock')">click me</button>
     </main>
+    <script src="src/loadDOM.js"></script>
     <script src="src/utils.js"></script>
     <script src="src/bar.js"></script>
+    <script src="src/render.js"></script>
     <script src="src/main.js"></script>
 </body>
 </html>
