@@ -30,6 +30,8 @@ function progressBar(time, bar) {
 
     if (runs >= time * 20) {
       clearInterval(intervalLoop);
+      bar.setValue(bar.max);
+      bar.setWidth();
       let now = Date.now();
 
       let elapsed = (now - dtime) / 1000;
