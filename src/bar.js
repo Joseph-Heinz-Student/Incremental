@@ -46,20 +46,19 @@ function progressBar(time, bar) {
     // move the bar 1/20 of 1s worth of width
     // not sure why i have to divide by time again
     // maybe ill figure it out eventually
-    bar.setValue(((time / oppInterval ) * runs) / time);
+    bar.setValue(((time / oppInterval) * runs) / time);
     bar.setWidth();
 
     runs++;
     //console.log(runs, (time / 20) * (runs - 1), bar.value);
 
-    if (runs >= time * ( 1000 / interval ) ) {
+    if (runs >= time * (1000 / interval)) {
       clearInterval(intervalLoop);
       bar.setValue(bar.max);
       bar.setWidth();
       let now = Date.now();
 
       let elapsed = (now - dtime) / 1000;
-
 
       /* 
          this console log is doing a lot
@@ -74,9 +73,11 @@ function progressBar(time, bar) {
         it gets converted to a substring so its not 20 characters long
       */
       console.log(
-        `Time elapsed: ${elapsed}\n${
-          ( abs((time - elapsed) / ((time + elapsed) / 2)) * 100 ).toString().substring(0,6)
-        }% Variance`
+        `Time elapsed: ${elapsed}\n${(
+          abs((time - elapsed) / ((time + elapsed) / 2)) * 100
+        )
+          .toString()
+          .substring(0, 6)}% Variance`
       );
       bar.active = false;
     }

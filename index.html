@@ -1,24 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/index.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
+    <aside>
+      <button class="tablink" onclick="openPage('Home', this, 'red')">
+        Home
+      </button>
+      <button
+        class="tablink"
+        onclick="openPage('News', this, 'green')"
+        id="defaultOpen"
+      >
+        News
+      </button>
+      <button class="tablink" onclick="openPage('Contact', this, 'blue')">
+        Contact
+      </button>
+      <button class="tablink" onclick="openPage('Mine', this, 'orange')">
+        Mine
+      </button>
+    </aside>
     <main>
+      <div id="Home" class="tabcontent">
+        <h3>Home</h3>
+        <p>Home is where the heart is..</p>
+      </div>
+
+      <div id="News" class="tabcontent">
+        <h3>News</h3>
+        <p>Some news this fine day!</p>
+      </div>
+
+      <div id="Contact" class="tabcontent">
+        <h3>Contact</h3>
+        <p>Get in touch, or swing by for a cup of coffee.</p>
+      </div>
+
+      <div id="Mine" class="tabcontent">
         <h1>resources</h1>
         <h2 id="rock-counter">Rock: 0</h2>
         <div class="progress-bar-container">
-            <div id="test" class="progress-bar" style="--bg-color:#ff0000;" data-value="100" data-max="100"></div>
+          <div
+            id="test"
+            class="progress-bar"
+            style="--bg-color: #ff0000"
+            data-value="100"
+            data-max="100"
+          ></div>
         </div>
         <button onclick="mine('rock')">click me</button>
+      </div>
     </main>
     <script src="src/loadDOM.js"></script>
     <script src="src/utils.js"></script>
     <script src="src/bar.js"></script>
     <script src="src/render.js"></script>
     <script src="src/main.js"></script>
-</body>
+  </body>
 </html>
