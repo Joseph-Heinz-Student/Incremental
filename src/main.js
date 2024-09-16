@@ -10,6 +10,7 @@ function progressBar(time, bar) {
   bar.active = true;
 
   let interval = 50;
+  let oppInterval = 1000 / interval;
   let runs = 0;
 
   bar.setMax(time);
@@ -22,13 +23,13 @@ function progressBar(time, bar) {
     // move the bar 1/20 of 1s worth of width
     // not sure why i have to divide by time again
     // maybe ill figure it out eventually
-    bar.setValue(((time / 20) * runs) / time);
+    bar.setValue(((time / oppInterval ) * runs) / time);
     bar.setWidth();
 
     runs++;
     //console.log(runs, (time / 20) * (runs - 1), bar.value);
 
-    if (runs >= time * 20) {
+    if (runs >= time * ( 1000 / interval ) ) {
       clearInterval(intervalLoop);
       bar.setValue(bar.max);
       bar.setWidth();
@@ -60,10 +61,11 @@ function progressBar(time, bar) {
 }
 
 function mine(resource) {
+  let time = 0;
   switch (resource) {
     case "rock":
-      let time = 10;
+      time = 5;
       progressBar(time, mineBar);
-      break;
+      break
   }
 }
