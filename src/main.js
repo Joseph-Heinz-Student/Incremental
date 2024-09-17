@@ -1,4 +1,4 @@
-const game = {
+let game = {
   resources: {
     rock: 0,
   },
@@ -26,11 +26,13 @@ mineBar.element.addEventListener("barFill", (e) => {
     game.resources[e.srcElement.dataset.mining]++;
   }
 });
-
+/*
 const saveLoop = setInterval(() => {
   save(game);
 }, 30000);
-
+*/
 const renderLoop = setInterval(() => {
   renderResource(game.resources.rock, "Rock: ", rockCounterDOM);
-},50)
+}, 50);
+
+if (load() != false) game = load();

@@ -11,7 +11,7 @@ body {
 }
 
 body {
-  display:flex;
+  display: flex;
 }
 
 /*
@@ -22,19 +22,19 @@ body {
 Main body styling
 */
 aside {
-  width:15vw;
-  height:100vh;
-  display:flex;
+  width: 15vw;
+  height: 100vh;
+  display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   align-items: stretch;
+  padding-bottom:0.25rem;
 }
 
 main {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 }
-
 
 /*
 Progress Bar Styling
@@ -89,6 +89,14 @@ Tabs styling
   height: 100%;
 }
 
+.tab-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
+}
+
 #Home {
   background-color: red;
 }
@@ -100,4 +108,12 @@ Tabs styling
 }
 #Mine {
   background-color: orange;
+}
+
+
+/*
+Style Save timer
+*/
+#saveTimer {
+  padding-left:0.25rem;
 }

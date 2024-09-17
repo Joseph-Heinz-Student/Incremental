@@ -9,15 +9,14 @@ function load(_game) {
   if (ls.gameSave != null && ls.gameSave != "undefined") {
     let gameClone = JSON.parse(ls.gameSave);
     for (resource in gameClone.resources) {
-        if (gameClone.resources[resource] == null) {
-            gameClone.resources[resource] = _game.resources[resource];
-        }
+      if (gameClone.resources[resource] == null) {
+        gameClone.resources[resource] = _game.resources[resource];
+      }
     }
 
     _game = gameClone;
-
-    
-
+  } else {
+    return false;
   }
 
   return _game;
