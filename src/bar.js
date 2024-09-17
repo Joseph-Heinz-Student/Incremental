@@ -33,7 +33,7 @@ function progressBar(time, bar) {
   bar.active = true;
 
   let interval = 50;
-  let oppInterval = 1000 / interval;
+  //let oppInterval = 1000 / interval;
   let runs = 0;
 
   bar.setMax(time);

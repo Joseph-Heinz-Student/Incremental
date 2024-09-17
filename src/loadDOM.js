@@ -1,4 +1,5 @@
 const rockCounterDOM = document.querySelector("#rock-counter");
+const ironCounterDOM = document.querySelector("#iron-counter");
 
 
 const mineBarDOM = document.querySelector("#test");

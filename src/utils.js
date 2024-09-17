@@ -18,6 +18,7 @@ const abs = (value) => {
 Events
 */
 
+// the event that triggers when a bar gets filled
 const barFill = new CustomEvent("barFill", {
   detail: {
     resource: "e"

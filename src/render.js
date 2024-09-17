@@ -3,6 +3,7 @@ function renderResource(amount, inner, elem) {
   return true;
 }
 
+// not important
 function openPage(pageName, elmnt, color) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -20,6 +21,8 @@ function openPage(pageName, elmnt, color) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
+
+// runs and writes the save timer code
 let timerStart = 0;
 function writeTimer() {
   if (timerStart >= 30) {
