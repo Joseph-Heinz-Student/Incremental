@@ -59,14 +59,19 @@
             data-mining="none"
           ></div>
         </div>
-        <button id="mineButton" onclick="mine(`${document.querySelector('#mineSelect').value}`)">click me</button>
+        <button
+          id="mineButton"
+          onclick="mine(`${document.querySelector('#mineSelect').value}`)"
+        >
+          click me
+        </button>
         <select id="mineSelect">
           <option value="rock">Rock</option>
           <option value="iron">Iron</option>
         </select>
       </div>
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="src/libs/loading-bar/loading-bar.min.js"></script>
     <script src="src/loadDOM.js"></script>
     <script src="src/utils.js"></script>
