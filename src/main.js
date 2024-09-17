@@ -26,6 +26,7 @@ mineBar.element.addEventListener("barFill", (e) => {
     game.resources[e.srcElement.dataset.mining]++;
   }
 });
+
 /*
 const saveLoop = setInterval(() => {
   save(game);

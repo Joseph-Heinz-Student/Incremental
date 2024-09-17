@@ -58,7 +58,10 @@
             data-mining="none"
           ></div>
         </div>
-        <button onclick="mine('rock')">click me</button>
+        <button id="mineButton" onclick="mine(`${document.querySelector('#mineSelect').value}`)">click me</button>
+        <select id="mineSelect">
+          <option value="rock">Rock</option>
+        </select>
       </div>
     </main>
 
