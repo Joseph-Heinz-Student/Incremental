@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/libs/loading-bar/loading-bar.min.css" />
   </head>
   <body>
     <aside>
+      <button
+        class="tablink"
+        onclick="openPage('Mine', this, 'orange')"
+        id="defaultOpen"
+      >
+        Mine
+      </button>
       <button class="tablink" onclick="openPage('Home', this, 'red')">
         Home
       </button>
-      <button
-        class="tablink"
-        onclick="openPage('News', this, 'green')"
-        id="defaultOpen"
-      >
+      <button class="tablink" onclick="openPage('News', this, 'green')">
         News
       </button>
       <button class="tablink" onclick="openPage('Contact', this, 'blue')">
         Contact
-      </button>
-      <button class="tablink" onclick="openPage('Mine', this, 'orange')">
-        Mine
       </button>
     </aside>
     <main>
@@ -51,11 +52,14 @@
             style="--bg-color: #ff0000"
             data-value="100"
             data-max="100"
+            data-mining="none"
           ></div>
         </div>
         <button onclick="mine('rock')">click me</button>
       </div>
     </main>
+
+    <script src="src/libs/loading-bar/loading-bar.min.js"></script>
     <script src="src/loadDOM.js"></script>
     <script src="src/utils.js"></script>
     <script src="src/bar.js"></script>

@@ -13,3 +13,13 @@ const abs = (value) => {
   }
   return value;
 };
+
+/*
+Events
+*/
+
+const barFill = new CustomEvent("barFill", {
+  detail: {
+    resource: "e"
+  },
+});

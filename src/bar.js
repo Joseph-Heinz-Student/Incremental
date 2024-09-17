@@ -50,7 +50,7 @@ function progressBar(time, bar) {
     bar.setWidth();
 
     runs++;
-    console.log(runs, (time / 20) * (runs - 1), bar.value);
+    //console.log(runs, (time / 20) * (runs - 1), bar.value);
 
     if (runs >= time * 20 ) {
       clearInterval(intervalLoop);
@@ -80,8 +80,9 @@ function progressBar(time, bar) {
           .substring(0, 6)}% Variance`
       );
       bar.active = false;
+      bar.element.dispatchEvent(barFill);
     }
   }, interval);
 }
 
-let mineBar = new ProgressBar(100, 100, document.querySelector("#test"));
+let mineBar = new ProgressBar(100, 100, mineBarDOM);

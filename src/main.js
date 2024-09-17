@@ -16,14 +16,21 @@ function mine(resource) {
     case "rock":
       time = 5;
       progressBar(time, mineBar);
-      execAfter(time, () => {
-        game.resources.rock++;
-        renderResource(game.resources.rock, "Rock: ", rockCounterDOM);
-      });
+      mineBarDOM.setAttribute("data-mining", "rock");
       break;
   }
 }
 
+mineBar.element.addEventListener("barFill", (e) => {
+  if (e.srcElement.dataset.mining && e.srcElement.dataset.mining !== "none") {
+    game.resources[e.srcElement.dataset.mining]++;
+  }
+});
+
 const saveLoop = setInterval(() => {
   save(game);
-}, 30000)
+}, 30000);
+
+const renderLoop = setInterval(() => {
+  renderResource(game.resources.rock, "Rock: ", rockCounterDOM);
+},50)
