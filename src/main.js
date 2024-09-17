@@ -23,3 +23,7 @@ function mine(resource) {
       break;
   }
 }
+
+const saveLoop = setInterval(() => {
+  save(game);
+}, 30000)

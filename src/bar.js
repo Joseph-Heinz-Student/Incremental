@@ -46,13 +46,13 @@ function progressBar(time, bar) {
     // move the bar 1/20 of 1s worth of width
     // not sure why i have to divide by time again
     // maybe ill figure it out eventually
-    bar.setValue(((time / oppInterval) * runs) / time);
+    bar.setValue(((time / 20) * runs) / time);
     bar.setWidth();
 
     runs++;
-    //console.log(runs, (time / 20) * (runs - 1), bar.value);
+    console.log(runs, (time / 20) * (runs - 1), bar.value);
 
-    if (runs >= time * (1000 / interval)) {
+    if (runs >= time * 20 ) {
       clearInterval(intervalLoop);
       bar.setValue(bar.max);
       bar.setWidth();
