@@ -5,13 +5,15 @@
 New major prerelease content update
 
 ### Added
+
 - Foundation for market system
-    - Currently only has a functional trading system (resources for resources)
+  - Currently only has a functional trading system (resources for resources)
 - Many new libraries, like Decimaljs and Numeraljs to help with working with numbers
 - New resource iron
-    - Player can now choose what resource to mine through a dropdown
+  - Player can now choose what resource to mine through a dropdown
 
 ### Fixed
+
 - Fixed error with loading new resources from updates
 
 ## [v0.0.2-alpha] - 2024-09-17
@@ -35,8 +37,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 
 ## Versions
 
-[v0.0.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.0.1-alpha)
+[v0.1.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.1.0-alpha)
 
 [v0.0.2-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.0.2-alpha)
 
-[v0.1.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.1.0-alpha)
+[v0.0.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.0.1-alpha)
