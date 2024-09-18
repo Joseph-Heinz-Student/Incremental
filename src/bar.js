@@ -52,7 +52,7 @@ function progressBar(time, bar) {
     runs++;
     //console.log(runs, (time / 20) * (runs - 1), bar.value);
 
-    if (runs >= time * 20 ) {
+    if (runs >= time * 20) {
       clearInterval(intervalLoop);
       bar.setValue(bar.max);
       bar.setWidth();

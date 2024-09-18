@@ -83,7 +83,7 @@ function trade(_trade) {
     game.resources[_trade.output] = Number(
       new Decimal(game.resources[_trade.output]).add(_trade.rate[1])
     );
-  }else {
+  } else {
     alert(`Not enough ${capitalizeFirstLetter(_trade.input)}`);
   }
 
