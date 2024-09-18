@@ -13,8 +13,10 @@ function load(_game) {
     // iterates and adds new resources to account for updates
     // so saves don't break every update
     for (resource in _game.resources) {
-      if (gameClone.resources[resource] == null || gameClone.resources[resource] == "undefined") {
-
+      if (
+        gameClone.resources[resource] == null ||
+        gameClone.resources[resource] == "undefined"
+      ) {
         gameClone.resources[resource] = _game.resources[resource];
       }
     }

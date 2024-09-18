@@ -8,6 +8,7 @@ let game = {
 function execAfter(time, func) {
   let waiter = setTimeout(() => {
     func();
+    clearTimeout(waiter);
   }, time * 1000);
 }
 
@@ -39,7 +40,17 @@ function mine(resource) {
 */
 mineBar.element.addEventListener("barFill", (e) => {
   if (e.srcElement.dataset.mining && e.srcElement.dataset.mining !== "none") {
-    game.resources[e.srcElement.dataset.mining]++;
+    /* 
+    this fixes floating point errors by using decimaljs
+    it creates a new Decimal from the current resources, then adds a random int
+    that is then divided by 100 to make it a decimal, which is then cut to 2 decimal
+    places, hopefully fully preventing floating point errors
+    */
+    let _new = new Decimal(game.resources[e.srcElement.dataset.mining])
+      .plus(new Decimal(chance.integer({ min: 5, max: 100 })).div(100))
+      .toDecimalPlaces(2);
+    // then we add a javascript number version of the new resource to the player
+    game.resources[e.srcElement.dataset.mining] = Number(_new);
   }
 });
 
