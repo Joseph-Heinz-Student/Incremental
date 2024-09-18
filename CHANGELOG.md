@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.1.1-alpha] - 2024-09-18
+
+Update to the market and base game
+
+### Added
+
+- System to sell resources to the market
+- Money, a new player resource
+
 ## [v0.1.0-alpha] - 2024-09-18
 
 New major prerelease content update
@@ -36,6 +45,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.1.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.1.1-alpha)
 
 [v0.1.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.1.0-alpha)
 
