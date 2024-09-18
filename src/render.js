@@ -15,7 +15,21 @@ function renderTrade(_trade, id) {
       )})\'>Trade</button></td>
     </tr>
   `;
-  return trade;
+  return _trade;
+}
+
+function renderSell(_sell, id) {
+  marketSellTableDOM.innerHTML += `
+    <tr id="market-sell-${id}">
+      <td>${capitalizeFirstLetter(_sell.input)}</td>
+      <td>${_sell.output.toString()}</td>
+      <td><button onclick=\'sell(${JSON.stringify(
+        _sell
+      )},${id})\'>Sell</button></td>
+      <td><input type="number" placeholder="1" id="market-sell-${id}-input"></td>
+    </tr>
+  `;
+  return _sell;
 }
 
 // not important

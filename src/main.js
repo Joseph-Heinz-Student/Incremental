@@ -3,6 +3,7 @@ let game = {
     rock: 0,
     iron: 0,
   },
+  money: 0,
 };
 
 function execAfter(time, func) {
@@ -60,6 +61,7 @@ const saveLoop = setInterval(() => {
 }, 30000);
 */
 const renderLoop = setInterval(() => {
+  renderResource(game.money, "Money: $", moneyCounterDOM);
   renderResource(game.resources.rock, "🜘 Rock: ", rockCounterDOM);
   renderResource(game.resources.iron, "🜜 Iron: ", ironCounterDOM);
 }, 50);
@@ -91,8 +93,31 @@ function trade(_trade) {
   return _trade;
 }
 
+function sell(_sell, id) {
+  if (
+    game.resources[_sell.input] >=
+    document.querySelector(`#market-sell-${id}-input`).value
+  ) {
+    game.resources[_sell.input] -= document.querySelector(
+      `#market-sell-${id}-input`
+    ).value;
+    game.money += Number(
+      new Decimal(document.querySelector(`#market-sell-${id}-input`).value).mul(
+        _sell.output
+      )
+    );
+  } else {
+    alert(`Not enough ${capitalizeFirstLetter(_sell.input)}`);
+  }
+  return true;
+}
+
 for (let _trade in market.trades) {
   renderTrade(market.trades[_trade], _trade);
+}
+
+for (let _sell in market.sells) {
+  renderSell(market.sells[_sell], _sell);
 }
 
 if (load(game) != false) game = load(game);

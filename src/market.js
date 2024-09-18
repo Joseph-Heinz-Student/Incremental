@@ -6,4 +6,10 @@ const market = {
       rate: "5:1",
     },
   ],
+  sells : [
+    {
+      input : "rock",
+      output : 10
+    }
+  ]
 };

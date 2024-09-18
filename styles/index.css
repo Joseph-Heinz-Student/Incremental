@@ -152,6 +152,12 @@ Market styling
   height: 100%;
   overflow-x: scroll;
   border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
+}
+
+#market-content table thead {
+  display: inline;
 }
 
 #market-content table tbody tr:nth-child(odd) {
@@ -165,7 +171,7 @@ Market styling
 
 #market-content table th,
 #market-content table td {
-  width: 25%;
+  width:25%;
   border: 1px solid #353535;
   display: flex;
   justify-content: center;
@@ -192,4 +198,9 @@ Market styling
   border: 2px solid var(--red);
   background: transparent;
   color: var(--red);
+}
+
+#market-content table tr td input {
+  width:100%;
+  height:100%;
 }
