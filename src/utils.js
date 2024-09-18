@@ -14,6 +14,10 @@ const abs = (value) => {
   return value;
 };
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 /*
 Events
 */
@@ -21,6 +25,6 @@ Events
 // the event that triggers when a bar gets filled
 const barFill = new CustomEvent("barFill", {
   detail: {
-    resource: "e"
+    resource: "e",
   },
 });

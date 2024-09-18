@@ -10,29 +10,41 @@
   <body>
     <aside>
       <div class="tab-buttons">
-        <button
-          class="tablink"
-          onclick="openPage('Mine', this, 'orange')"
-          id="defaultOpen"
-        >
+        <button class="tablink" onclick="openPage('Mine', this, '#fabd4d')">
           Mine
         </button>
-        <button class="tablink" onclick="openPage('Home', this, 'red')">
-          Home
+        <button
+          class="tablink"
+          onclick="openPage('Market', this, '#f34949')"
+          id="defaultOpen"
+        >
+          Market
         </button>
-        <button class="tablink" onclick="openPage('News', this, 'green')">
+        <button class="tablink" onclick="openPage('News', this, '#278a27')">
           News
         </button>
-        <button class="tablink" onclick="openPage('Contact', this, 'blue')">
+        <button class="tablink" onclick="openPage('Contact', this, '#5050f8')">
           Contact
         </button>
       </div>
       <span id="saveTimer">30.0s</span>
     </aside>
     <main>
-      <div id="Home" class="tabcontent">
-        <h3>Home</h3>
-        <p>Home is where the heart is..</p>
+      <div id="Market" class="tabcontent">
+        <h1>Market</h1>
+        <section id="market-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Input Item</th>
+                <th>Output Item</th>
+                <th>Exchange Rate</th>
+                <th>Button</th>
+              </tr>
+            </thead>
+            <tbody id="market-trade"></tbody>
+          </table>
+        </section>
       </div>
 
       <div id="News" class="tabcontent">
@@ -46,29 +58,31 @@
       </div>
 
       <div id="Mine" class="tabcontent">
-        <h1>resources</h1>
-        <h2 id="rock-counter">Rock: 0</h2>
-        <h2 id="iron-counter">Iron: 0</h2>
-        <div class="progress-bar-container">
-          <div
-            id="test"
-            class="progress-bar"
-            style="--bg-color: #ff0000"
-            data-value="100"
-            data-max="100"
-            data-mining="none"
-          ></div>
+        <div>
+          <h1>resources</h1>
+          <h2 id="rock-counter">Rock: 0</h2>
+          <h2 id="iron-counter">Iron: 0</h2>
+          <div class="progress-bar-container">
+            <div
+              id="test"
+              class="progress-bar"
+              style="--bg-color: #ff0000"
+              data-value="100"
+              data-max="100"
+              data-mining="none"
+            ></div>
+          </div>
+          <button
+            id="mineButton"
+            onclick="mine(`${document.querySelector('#mineSelect').value}`)"
+          >
+            click me
+          </button>
+          <select id="mineSelect">
+            <option value="rock">Rock</option>
+            <option value="iron">Iron</option>
+          </select>
         </div>
-        <button
-          id="mineButton"
-          onclick="mine(`${document.querySelector('#mineSelect').value}`)"
-        >
-          click me
-        </button>
-        <select id="mineSelect">
-          <option value="rock">Rock</option>
-          <option value="iron">Iron</option>
-        </select>
       </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
@@ -80,6 +94,7 @@
     <script src="src/bar.js"></script>
     <script src="src/save.js"></script>
     <script src="src/render.js"></script>
+    <script src="src/market.js"></script>
     <script src="src/main.js"></script>
   </body>
 </html>

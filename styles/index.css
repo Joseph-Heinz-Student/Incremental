@@ -1,3 +1,10 @@
+:root {
+  --orange: #fabd4d;
+  --blue: #5050f8;
+  --green: #278a27;
+  --red:#f34949;
+}
+
 * {
   padding: 0%;
   margin: 0;
@@ -85,8 +92,9 @@ Tabs styling
 .tabcontent {
   color: white;
   display: none;
-  padding: 100px 20px;
   height: 100%;
+  padding-top:2rem;
+  gap:2rem;
 }
 
 .tab-buttons {
@@ -97,17 +105,21 @@ Tabs styling
   align-items: stretch;
 }
 
-#Home {
-  background-color: red;
+#Market {
+  background-color: var(--red);
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 #News {
-  background-color: green;
+  background-color: var(--green);
 }
 #Contact {
-  background-color: blue;
+  background-color: var(--blue);
 }
 #Mine {
-  background-color: orange;
+  background-color: var(--orange);
 }
 
 
@@ -122,4 +134,62 @@ Style Save timer
   align-items: center;
   background:#555;
   color:white;
+}
+
+/*
+Market styling
+*/
+
+#market-content {
+  width:100%;
+  flex-grow:1;
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#market-content table {
+  width:30%;
+  height:100%;
+  overflow-x:scroll;
+  border-collapse: collapse;
+}
+
+#market-content table tbody tr:nth-child(odd) {
+  background:#cacaca;
+}
+
+#market-content table tr {
+  display:flex;
+  background:#f3f3f3;
+}
+
+#market-content table th, #market-content table td {
+  width:25%;
+  border:1px solid #353535;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:0.5rem 1rem;
+  color:black;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+#market-content table tr td button {
+  height:100%;
+  width:100%;
+  background:var(--red);
+  border:2px solid transparent;
+  padding:0.25rem;
+  border-radius:25rem;
+  color:white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#market-content table tr td button:hover {
+  border:2px solid var(--red);
+  background:transparent;
+  color:var(--red);
 }

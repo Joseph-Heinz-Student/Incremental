@@ -1,6 +1,21 @@
 function renderResource(amount, inner, elem) {
-  elem.innerHTML = `${inner}${amount}`;
+  elem.innerHTML = `${inner}${new numeral(amount).format("0[.]00a")}`;
   return true;
+}
+
+function renderTrade(_trade, id) {
+  //console.log(_trade, id);
+  marketTradeTableDOM.innerHTML += `
+    <tr id="market-trade-${id}">
+      <td>${capitalizeFirstLetter(_trade.input)}</td>
+      <td>${capitalizeFirstLetter(_trade.output)}</td>
+      <td>${_trade.rate}</td>
+      <td><button onclick=\'trade(${JSON.stringify(
+        _trade
+      )})\'>Trade</button></td>
+    </tr>
+  `;
+  return trade;
 }
 
 // not important
@@ -14,13 +29,12 @@ function openPage(pageName, elmnt, color) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].style.backgroundColor = "";
   }
-  document.getElementById(pageName).style.display = "block";
+  document.getElementById(pageName).style.display = "flex";
   elmnt.style.backgroundColor = color;
 }
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
-
 
 // runs and writes the save timer code
 let timerStart = 0;

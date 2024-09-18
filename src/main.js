@@ -60,8 +60,39 @@ const saveLoop = setInterval(() => {
 }, 30000);
 */
 const renderLoop = setInterval(() => {
-  renderResource(game.resources.rock, "Rock: ", rockCounterDOM);
-  renderResource(game.resources.iron, "Iron: ", ironCounterDOM);
+  renderResource(game.resources.rock, "🜘 Rock: ", rockCounterDOM);
+  renderResource(game.resources.iron, "🜜 Iron: ", ironCounterDOM);
 }, 50);
+
+function trade(_trade) {
+  _trade.rate = _trade.rate.split(":");
+
+  /*
+  a lot here
+  checks to see if the player has enough of the input
+  resource to trade, but makes sure it exists
+  */
+  if (
+    game.resources[_trade.input] >= _trade.rate[0] &&
+    game.resources[_trade.input] != null &&
+    game.resources[_trade.input] != "undefined"
+  ) {
+    game.resources[_trade.input] = Number(
+      new Decimal(game.resources[_trade.input]).sub(_trade.rate[0])
+    );
+    game.resources[_trade.output] = Number(
+      new Decimal(game.resources[_trade.output]).add(_trade.rate[1])
+    );
+  }else {
+    alert(`Not enough ${capitalizeFirstLetter(_trade.input)}`);
+  }
+
+  console.log(_trade);
+  return _trade;
+}
+
+for (let _trade in market.trades) {
+  renderTrade(market.trades[_trade], _trade);
+}
 
 if (load(game) != false) game = load(game);
