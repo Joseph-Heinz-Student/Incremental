@@ -10,3 +10,5 @@ const saveTimerDOM = document.querySelector("#saveTimer");
 
 const marketTradeTableDOM = document.querySelector("#market-trade");
 const marketSellTableDOM = document.querySelector("#market-sell");
+
+const upgradesDOM = document.querySelector("#upgrades");

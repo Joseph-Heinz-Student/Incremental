@@ -4,6 +4,24 @@ let game = {
     iron: 0,
   },
   money: 0,
+  upgrades: {
+    mineSpeed: {
+      amount: 0,
+      cost: 10,
+      modifiers: {
+        speed: 0.01,
+        operation: "add",
+      },
+      name: "Mine Speed",
+      unlocked: 1,
+      hasun: false,
+      flavor: "Upgrade your mining speed",
+      id: "mineSpeed",
+    },
+  },
+  stats: {
+    speed: 1,
+  },
 };
 
 function execAfter(time, func) {
@@ -89,7 +107,7 @@ function trade(_trade) {
     alert(`Not enough ${capitalizeFirstLetter(_trade.input)}`);
   }
 
-  console.log(_trade);
+  //console.log(_trade);
   return _trade;
 }
 
@@ -112,6 +130,29 @@ function sell(_sell, id) {
   return true;
 }
 
+function updateUpgrades() {
+  upgradesDOM.innerHTML = "";
+  for (let upgrade in game.upgrades) {
+    if (game.upgrades[upgrade].hasun) {
+      renderUpgrade(game.upgrades[upgrade]);
+    }
+  }
+
+  return true;
+}
+
+function buyUpgrade(_upgrade, amount) {
+  if (game.money >= Number(new Decimal(_upgrade.cost).mul(amount))) {
+    game.money -= Number(new Decimal(_upgrade.cost).mul(amount));
+    game.upgrades[_upgrade.id].amount += amount;
+    updateUpgrades();
+  } else {
+    alert("false");
+  }
+
+  return true;
+}
+
 for (let _trade in market.trades) {
   renderTrade(market.trades[_trade], _trade);
 }
@@ -121,3 +162,17 @@ for (let _sell in market.sells) {
 }
 
 if (load(game) != false) game = load(game);
+
+const checkUpgradeUnlock = setInterval(() => {
+  for (let upgrade in game.upgrades) {
+    if (
+      !game.upgrades[upgrade].hasun &&
+      game.upgrades[upgrade].unlocked <= game.money
+    ) {
+      game.upgrades[upgrade].hasun = true;
+      updateUpgrades();
+    }
+  }
+}, 50);
+
+updateUpgrades();

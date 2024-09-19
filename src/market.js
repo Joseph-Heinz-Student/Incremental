@@ -5,11 +5,16 @@ const market = {
       output: "iron",
       rate: "5:1",
     },
-  ],
-  sells : [
     {
-      input : "rock",
-      output : 10
-    }
-  ]
+      input: "iron",
+      output: "rock",
+      rate: "1:5",
+    },
+  ],
+  sells: [
+    {
+      input: "rock",
+      output: 10,
+    },
+  ],
 };

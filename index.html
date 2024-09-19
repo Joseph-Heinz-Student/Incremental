@@ -10,14 +10,14 @@
   <body>
     <aside>
       <div class="tab-buttons">
-        <button class="tablink" onclick="openPage('Mine', this, '#fabd4d')">
+        <button
+          id="defaultOpen"
+          class="tablink"
+          onclick="openPage('Mine', this, '#fabd4d')"
+        >
           Mine
         </button>
-        <button
-          class="tablink"
-          onclick="openPage('Market', this, '#f34949')"
-          id="defaultOpen"
-        >
+        <button class="tablink" onclick="openPage('Market', this, '#f34949')">
           Market
         </button>
         <button class="tablink" onclick="openPage('News', this, '#278a27')">
@@ -69,8 +69,8 @@
       </div>
 
       <div id="Mine" class="tabcontent">
-        <div>
-          <h1>resources</h1>
+        <div id="mining-panel">
+          <h1>Resources</h1>
           <h2 id="money-counter">Money: 0</h2>
           <h2 id="rock-counter">Rock: 0</h2>
           <h2 id="iron-counter">Iron: 0</h2>
@@ -94,6 +94,12 @@
             <option value="rock">Rock</option>
             <option value="iron">Iron</option>
           </select>
+        </div>
+        <div id="upgrades-panel">
+          <h1>Upgrades</h1>
+          <div id="upgrades">
+            
+          </div>
         </div>
       </div>
     </main>

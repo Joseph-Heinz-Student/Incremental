@@ -32,6 +32,24 @@ function renderSell(_sell, id) {
   return _sell;
 }
 
+function renderUpgrade(_upgrade) {
+  upgradesDOM.innerHTML += `
+    <div id="upgrade-${_upgrade.id}">
+      <strong>${_upgrade.name} x${new numeral(_upgrade.amount).format(
+    "0[.]00a"
+  )}</strong><br>
+      <span>${_upgrade.flavor}</span><br>
+      <div class="upgrade-buttons-wrapper">
+        <button onclick=\'buyUpgrade(${JSON.stringify(
+          _upgrade
+        )},1)\'>Buy 1</button>
+      </div>
+    </div>
+  `;
+
+  return _upgrade;
+}
+
 // not important
 function openPage(pageName, elmnt, color) {
   var i, tabcontent, tablinks;
