@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.2.1-alpha] - 2024-09-19
+
+Built off of the system from the previous version of the upgrade system
+
+### Added
+
+- Calculations for player stats based off of purchased upgrades
+
+### Changed
+
+- Modifiers in an upgrade from a object to and array, to allow for more than one modifier per upgrade
+
 ## [v0.2.0-alpha] - 2024-09-19
 
 Functionality for upgrade system
@@ -54,6 +66,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.2.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.2.1-alpha)
 
 [v0.2.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.2.0-alpha)
 
