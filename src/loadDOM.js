@@ -17,3 +17,7 @@ const autoMineDOM = document.querySelector("#autoMine");
 const autoMineCheckboxDOM = document.querySelector("#autoMineCheckbox");
 
 const storeDOM = document.querySelector("#store");
+
+const consoleInput = document.querySelector(".console-input");
+const historyContainer = document.querySelector(".console-history");
+const consoleDOM = document.querySelector(".console");
