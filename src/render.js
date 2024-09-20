@@ -73,9 +73,9 @@ let timerStart = 0;
 function writeTimer() {
   if (timerStart >= 30) {
     saveTimerDOM.innerHTML = "Game Saved!";
+    save(game);
     setTimeout(() => {
       timerStart = 0;
-      save(game);
       writeTimer();
     }, 2500);
   } else {
