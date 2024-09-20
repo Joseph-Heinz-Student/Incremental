@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.2.0-alpha] - 2024-09-19
+
+Functionality for upgrade system
+
+### Added
+
+- Upgrades to the player, such as mining speed
+- Player stats, currently only mining speed
+
 ## [v0.1.1-alpha] - 2024-09-18
 
 Update to the market and base game
@@ -45,6 +54,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.2.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.2.0-alpha)
 
 [v0.1.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.1.1-alpha)
 

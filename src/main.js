@@ -8,10 +8,13 @@ let game = {
     mineSpeed: {
       amount: 0,
       cost: 10,
-      modifiers: {
-        speed: 0.01,
-        operation: "add",
-      },
+      modifiers: [
+        {
+          stat: "speed",
+          operation: "add",
+          amount: 0.01,
+        },
+      ],
       name: "Mine Speed",
       unlocked: 1,
       hasun: false,
@@ -24,6 +27,10 @@ let game = {
   },
 };
 
+const baseStats = {
+  speed: 1,
+};
+
 function execAfter(time, func) {
   let waiter = setTimeout(() => {
     func();
@@ -33,14 +40,15 @@ function execAfter(time, func) {
 
 function mine(resource) {
   let time = 0;
+  calculateStats();
   switch (resource) {
     case "rock":
-      time = 5;
+      time = Number(new Decimal(5).div(game.stats.speed).toDecimalPlaces(3));
       progressBar(time, mineBar);
       mineBarDOM.setAttribute("data-mining", "rock");
       break;
     case "iron":
-      time = 10;
+      time = Number(new Decimal(10).div(game.stats.speed).toDecimalPlaces(3));
       progressBar(time, mineBar);
       mineBarDOM.setAttribute("data-mining", "iron");
       break;
@@ -137,7 +145,7 @@ function updateUpgrades() {
       renderUpgrade(game.upgrades[upgrade]);
     }
   }
-
+  calculateStats();
   return true;
 }
 
@@ -145,12 +153,36 @@ function buyUpgrade(_upgrade, amount) {
   if (game.money >= Number(new Decimal(_upgrade.cost).mul(amount))) {
     game.money -= Number(new Decimal(_upgrade.cost).mul(amount));
     game.upgrades[_upgrade.id].amount += amount;
+    game.upgrades[_upgrade.id].cost = Number(
+      new Decimal(game.upgrades[_upgrade.id].cost).mul(1.25).toDecimalPlaces(2)
+    );
     updateUpgrades();
   } else {
     alert("false");
   }
 
   return true;
+}
+
+function calculateStats() {
+  for (_upgrade in game.upgrades) {
+    let _modifiers = game.upgrades[_upgrade].modifiers;
+    for (_mod in _modifiers) {
+      let _statName = game.upgrades[_upgrade].modifiers[_mod].stat;
+      let _op = _modifiers[_mod].operation;
+      switch (_op) {
+        case "add":
+          game.stats[_statName] = Number(
+            new Decimal(baseStats[_statName]).add(
+              new Decimal(_modifiers[_mod].amount).mul(
+                game.upgrades[_upgrade].amount
+              )
+            )
+          );
+          break;
+      }
+    }
+  }
 }
 
 for (let _trade in market.trades) {

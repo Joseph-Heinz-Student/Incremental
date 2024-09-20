@@ -37,7 +37,7 @@ function renderUpgrade(_upgrade) {
     <div id="upgrade-${_upgrade.id}">
       <strong>${_upgrade.name} x${new numeral(_upgrade.amount).format(
     "0[.]00a"
-  )}</strong><br>
+  )} - ${new numeral(_upgrade.cost).format("0[.]00a")}</strong><br>
       <span>${_upgrade.flavor}</span><br>
       <div class="upgrade-buttons-wrapper">
         <button onclick=\'buyUpgrade(${JSON.stringify(
