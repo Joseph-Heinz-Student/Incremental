@@ -94,7 +94,7 @@ function writeTimer() {
       writeTimer();
     }, 2500);
   } else {
-    saveTimerDOM.innerHTML = `${parseFloat(timerStart).toPrecision(3)}s`;
+    saveTimerDOM.innerHTML = `${new numeral(parseFloat(timerStart)).format("0.0")}s`;
     timerStart += 0.1;
     setTimeout(writeTimer, 100);
   }

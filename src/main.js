@@ -183,6 +183,10 @@ function buyUpgrade(_upgrade, amount) {
   return true;
 }
 
+function runStoreFunctions() {
+  checkAutoMine(game);
+}
+
 function updateStore() {
   storeDOM.innerHTML = "";
   for (let item in game.store) {
@@ -190,14 +194,15 @@ function updateStore() {
       renderStore(game.store[item]);
     }
   }
-
+  runStoreFunctions();
   return true;
 }
 
 function buyStoreItem(_item) {
   if (
     Number(new Decimal(game.money).toDecimalPlaces(2)) >=
-    Number(new Decimal(_item.cost)) && !_item.purchased
+      Number(new Decimal(_item.cost)) &&
+    !_item.purchased
   ) {
     game.money =
       Number(new Decimal(game.money).toDecimalPlaces(2)) -
