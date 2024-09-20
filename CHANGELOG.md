@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.1-alpha] - 2024-09-20
+
+Minor QOL changes
+
+### Added
+
+- In-page console, in case of player's not having access to the inspect console
+- A display of the player's current resources on the market page, so they don't have to change the page constantly
+- A list of the player's current stats on the sidebar
+- Luck stat
+- Upgrade for luck in the upgrades panel
+- Connected the auto mine button to have the need for the auto mine store item purchased
+
 ## [0.3.0-alpha] - 2024-09-20
 
 New major content for the alpha version
@@ -82,6 +95,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.3.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.3.1-alpha)
 
 [v0.3.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.3.0-alpha)
 
