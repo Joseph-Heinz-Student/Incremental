@@ -78,6 +78,10 @@ mineBar.element.addEventListener("barFill", (e) => {
       .toDecimalPlaces(2);
     // then we add a javascript number version of the new resource to the player
     game.resources[e.srcElement.dataset.mining] = Number(_new);
+
+    if(autoMineCheckboxDOM.checked) {
+      mine(mineSelectDOM.value);
+    }
   }
 });
 
@@ -163,6 +167,8 @@ function buyUpgrade(_upgrade, amount) {
 
   return true;
 }
+
+
 
 function calculateStats() {
   for (_upgrade in game.upgrades) {
