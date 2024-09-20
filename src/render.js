@@ -53,7 +53,9 @@ function renderUpgrade(_upgrade) {
 }
 
 function renderStore(_item) {
-  if(_item.purchased) {return false;}
+  if (_item.purchased) {
+    return false;
+  }
   storeDOM.innerHTML += `
     <div id="store-item-${_item.id}">
       <strong>${_item.name} - \$${_item.cost}</strong>
@@ -94,10 +96,23 @@ function writeTimer() {
       writeTimer();
     }, 2500);
   } else {
-    saveTimerDOM.innerHTML = `${new numeral(parseFloat(timerStart)).format("0.0")}s`;
+    saveTimerDOM.innerHTML = `${new numeral(parseFloat(timerStart)).format(
+      "0.0"
+    )}s`;
     timerStart += 0.1;
     setTimeout(writeTimer, 100);
   }
 }
+
+const renderResourcesMarket = setInterval(() => {
+  marketResourcesDOM.innerHTML = "";
+  for (let resource in game.resources) {
+    marketResourcesDOM.innerHTML += `${capitalizeFirstLetter(
+      resource
+    )}: ${new numeral(
+      new Decimal(game.resources[resource]).toDecimalPlaces(2)
+    ).format("0[.]00a")} | `;
+  }
+}, 50);
 
 writeTimer();
