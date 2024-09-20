@@ -21,6 +21,22 @@ let game = {
       flavor: "Upgrade your mining speed",
       id: "mineSpeed",
     },
+    moreMineLuck: {
+      amount: 0,
+      cost: 100,
+      modifiers: [
+        {
+          stat: "miningLuck",
+          operation: "add",
+          amount: 0.025,
+        },
+      ],
+      name: "More Mining Luck",
+      unlocked: 50,
+      hasun: false,
+      flavor: "Upgrade your mining luck",
+      id: "moreMineLuck",
+    },
   },
   store: {
     autoMine: {
@@ -35,12 +51,19 @@ let game = {
   },
   stats: {
     speed: 1,
+    miningLuck: 1,
   },
 };
 
 const baseStats = {
   speed: 1,
+  miningLuck: 1,
 };
+
+const statIcons = {
+  speed:"&#10023;",
+  miningLuck:"&#9831;"
+}
 
 function execAfter(time, func) {
   let waiter = setTimeout(() => {
@@ -85,7 +108,11 @@ mineBar.element.addEventListener("barFill", (e) => {
     places, hopefully fully preventing floating point errors
     */
     let _new = new Decimal(game.resources[e.srcElement.dataset.mining])
-      .plus(new Decimal(chance.integer({ min: 5, max: 100 })).div(100))
+      .plus(
+        new Decimal(chance.integer({ min: 5, max: 100 }))
+          .mul(game.stats.miningLuck)
+          .div(100)
+      )
       .toDecimalPlaces(2);
     // then we add a javascript number version of the new resource to the player
     game.resources[e.srcElement.dataset.mining] = Number(_new);
@@ -105,6 +132,10 @@ const renderLoop = setInterval(() => {
   renderResource(game.money, "Money: $", moneyCounterDOM);
   renderResource(game.resources.rock, "🜘 Rock: ", rockCounterDOM);
   renderResource(game.resources.iron, "🜜 Iron: ", ironCounterDOM);
+  statsDOM.innerHTML = "";
+  for(let _stat in game.stats){
+    renderStat(game.stats[_stat],statIcons[_stat],capitalizeFirstLetter(_stat));
+  }
 }, 50);
 
 function trade(_trade) {

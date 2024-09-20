@@ -115,4 +115,10 @@ const renderResourcesMarket = setInterval(() => {
   }
 }, 50);
 
+function renderStat(_stat,icon,name) {
+  statsDOM.innerHTML += `
+    <span>${icon} ${name}: ${new numeral(new Decimal( _stat )).format("0[.]00%")}</span>
+  `
+}
+
 writeTimer();

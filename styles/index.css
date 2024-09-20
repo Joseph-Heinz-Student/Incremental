@@ -389,3 +389,19 @@ console styling
 .console-input:focus {
   background: rgba(255, 255, 255, 0.07);
 }
+
+/*
+stats styling
+*/
+
+#sidebar-stats {
+  background:#555;
+  color:white;
+  padding:1rem;
+  flex-grow:1;
+}
+
+#stats {
+  display:flex;
+  flex-direction: column;
+}
