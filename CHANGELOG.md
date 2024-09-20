@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0-alpha] - 2024-09-20
+
+New major content for the alpha version
+
+### Added
+
+- Auto mine checkbox, which lets the player auto mine resources
+- A store, similar to the upgrades panel, but only contains game changing one time purchases
+
+### Fixed 
+- Some floating point errors with the players resources when selling or trading to the market
+- Added `let` to some variables that are initialized in `for` and `if` statements, just best practice I think
+
+### Changed
+- Some little things with putting `new Decimal`s inside of `numeral`s for rendering
+
 ## [v0.2.1-alpha] - 2024-09-19
 
 Built off of the system from the previous version of the upgrade system
@@ -66,6 +82,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.3.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.3.0-alpha)
 
 [v0.2.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.2.1-alpha)
 
