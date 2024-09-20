@@ -15,3 +15,5 @@ const upgradesDOM = document.querySelector("#upgrades");
 
 const autoMineDOM = document.querySelector("#autoMine");
 const autoMineCheckboxDOM = document.querySelector("#autoMineCheckbox");
+
+const storeDOM = document.querySelector("#store");

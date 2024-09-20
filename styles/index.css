@@ -14,7 +14,8 @@
   background-clip: padding-box;
   -webkit-border-radius: 7px;
   background-color: #222;
-  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+    inset 1px 1px 0px rgba(0, 0, 0, 0.05);
   transition: all 0.5s ease;
 }
 
@@ -198,7 +199,7 @@ Market styling
 
 #market-content table th,
 #market-content table td {
-  width:25%;
+  width: 25%;
   border: 1px solid #353535;
   display: flex;
   justify-content: center;
@@ -234,51 +235,91 @@ Market styling
 }
 
 #market-content table tr td input {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   text-align: right;
 }
 
 /*
   upgrades styling
 */
+#upgrades-panel,
+#mining-panel,
+#store-panel {
+  flex-grow: 1;
+}
+
 #upgrades {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  padding:1rem;
-  gap:1.5rem;
+  padding: 1rem;
+  gap: 1.5rem;
   overflow-y: scroll;
+  flex-grow: 1;
 }
 
 .upgrade-buttons-wrapper {
-  display:flex;
+  display: flex;
   justify-content: stretch;
-  width:100%;
-  padding:0.25rem;
+  width: 100%;
+  padding: 0.25rem;
 }
 
 .upgrade-buttons-wrapper button {
   flex-grow: 1;
-  background:#c47d21;
-  color:white;
-  border:none;
-  border-radius:50rem;
-  padding:0.25rem 0.5rem;
+  background: #c47d21;
+  color: white;
+  border: none;
+  border-radius: 50rem;
+  padding: 0.25rem 0.5rem;
   cursor: pointer;
   font-weight: 700;
 }
-
 
 /*
 auto mine styling
 */
 
 #autoMine {
-  display:inline-flex;
+  display: inline-flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+}
+
+/*
+store styling
+*/
+
+#store {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 1rem;
+  gap: 1.5rem;
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+#store button {
+  width:100%;
+  background: #c47d21;
+  color: white;
+  border: none;
+  border-radius: 50rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#store>div {
+  display:flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
   gap:0.25rem;
-  padding:0.25rem;
 }

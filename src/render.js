@@ -1,5 +1,7 @@
 function renderResource(amount, inner, elem) {
-  elem.innerHTML = `${inner}${new numeral(amount).format("0[.]00a")}`;
+  elem.innerHTML = `${inner}${new numeral(
+    new Decimal(amount).toDecimalPlaces(2)
+  ).format("0[.]00a")}`;
   return true;
 }
 
@@ -37,7 +39,7 @@ function renderUpgrade(_upgrade) {
     <div id="upgrade-${_upgrade.id}">
       <strong>${_upgrade.name} x${new numeral(_upgrade.amount).format(
     "0[.]00a"
-  )} - ${new numeral(_upgrade.cost).format("0[.]00a")}</strong><br>
+  )} <br> Cost: \$${new numeral(_upgrade.cost).format("0[.]00a")}</strong><br>
       <span>${_upgrade.flavor}</span><br>
       <div class="upgrade-buttons-wrapper">
         <button onclick=\'buyUpgrade(${JSON.stringify(
@@ -48,6 +50,19 @@ function renderUpgrade(_upgrade) {
   `;
 
   return _upgrade;
+}
+
+function renderStore(_item) {
+  if(_item.purchased) {return false;}
+  storeDOM.innerHTML += `
+    <div id="store-item-${_item.id}">
+      <strong>${_item.name} - \$${_item.cost}</strong>
+      <span>${_item.flavor}</span>
+      <button onclick=\'buyStoreItem(${JSON.stringify(
+        _item
+      )})\'>Purchase</button>
+    </div>
+  `;
 }
 
 // not important

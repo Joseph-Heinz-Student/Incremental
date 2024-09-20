@@ -22,6 +22,17 @@ let game = {
       id: "mineSpeed",
     },
   },
+  store: {
+    autoMine: {
+      cost: 50,
+      hasun: false,
+      unlocked: 25,
+      name: "Auto Mine",
+      flavor: "Auto mine resources",
+      id: "autoMine",
+      purchased: false,
+    },
+  },
   stats: {
     speed: 1,
   },
@@ -79,7 +90,7 @@ mineBar.element.addEventListener("barFill", (e) => {
     // then we add a javascript number version of the new resource to the player
     game.resources[e.srcElement.dataset.mining] = Number(_new);
 
-    if(autoMineCheckboxDOM.checked) {
+    if (autoMineCheckboxDOM.checked) {
       mine(mineSelectDOM.value);
     }
   }
@@ -128,9 +139,11 @@ function sell(_sell, id) {
     game.resources[_sell.input] >=
     document.querySelector(`#market-sell-${id}-input`).value
   ) {
-    game.resources[_sell.input] -= document.querySelector(
-      `#market-sell-${id}-input`
-    ).value;
+    game.resources[_sell.input] -= Number(
+      new Decimal(
+        document.querySelector(`#market-sell-${id}-input`).value
+      ).toDecimalPlaces(2)
+    );
     game.money += Number(
       new Decimal(document.querySelector(`#market-sell-${id}-input`).value).mul(
         _sell.output
@@ -155,25 +168,50 @@ function updateUpgrades() {
 
 function buyUpgrade(_upgrade, amount) {
   if (game.money >= Number(new Decimal(_upgrade.cost).mul(amount))) {
-    game.money -= Number(new Decimal(_upgrade.cost).mul(amount));
+    game.money =
+      Number(new Decimal(game.money).toDecimalPlaces(2)) -
+      Number(new Decimal(_upgrade.cost).mul(amount));
     game.upgrades[_upgrade.id].amount += amount;
     game.upgrades[_upgrade.id].cost = Number(
       new Decimal(game.upgrades[_upgrade.id].cost).mul(1.25).toDecimalPlaces(2)
     );
     updateUpgrades();
   } else {
-    alert("false");
+    alert("Not enough money");
   }
 
   return true;
 }
 
+function updateStore() {
+  storeDOM.innerHTML = "";
+  for (let item in game.store) {
+    if (game.store[item].hasun) {
+      renderStore(game.store[item]);
+    }
+  }
 
+  return true;
+}
+
+function buyStoreItem(_item) {
+  if (
+    Number(new Decimal(game.money).toDecimalPlaces(2)) >=
+    Number(new Decimal(_item.cost)) && !_item.purchased
+  ) {
+    game.money =
+      Number(new Decimal(game.money).toDecimalPlaces(2)) -
+      Number(new Decimal(_item.cost));
+    game.store[_item.id].purchased = true;
+    updateStore();
+  }
+  return true;
+}
 
 function calculateStats() {
-  for (_upgrade in game.upgrades) {
+  for (let _upgrade in game.upgrades) {
     let _modifiers = game.upgrades[_upgrade].modifiers;
-    for (_mod in _modifiers) {
+    for (let _mod in _modifiers) {
       let _statName = game.upgrades[_upgrade].modifiers[_mod].stat;
       let _op = _modifiers[_mod].operation;
       switch (_op) {
@@ -213,4 +251,18 @@ const checkUpgradeUnlock = setInterval(() => {
   }
 }, 50);
 
+const checkStoreUnlock = setInterval(() => {
+  for (let item in game.store) {
+    if (
+      !game.store[item].hasun &&
+      game.store[item].unlocked <= game.money &&
+      !game.store[item].purchased
+    ) {
+      game.store[item].hasun = true;
+      updateStore();
+    }
+  }
+}, 50);
+
 updateUpgrades();
+updateStore();

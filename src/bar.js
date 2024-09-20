@@ -72,13 +72,13 @@ function progressBar(time, bar) {
          [       2        ]
         it gets converted to a substring so its not 20 characters long
       */
-      console.log(
+      /*console.log(
         `Time elapsed: ${elapsed}\n${(
           abs((time - elapsed) / ((time + elapsed) / 2)) * 100
         )
           .toString()
           .substring(0, 6)}% Variance`
-      );
+      );*/
       bar.active = false;
       bar.element.dispatchEvent(barFill);
     }
