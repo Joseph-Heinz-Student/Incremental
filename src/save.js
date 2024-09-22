@@ -6,9 +6,12 @@ function save(_game) {
 }
 
 function load(_game) {
-
-  if(!ls.defaultGame){
-    ls.defaultGame = _game;
+  if (
+    !ls.defaultGame ||
+    ls.defaultGame == null ||
+    ls.defaultGame == "undefined"
+  ) {
+    ls.defaultGame = JSON.stringify(_game);
   }
 
   // checks to see if there is a valid localStorage save
@@ -60,9 +63,11 @@ function load(_game) {
   return _game;
 }
 
-function reset(_game){
-  if(confirm("Are you sure you want to reset all progress?")){
-    _game = ls.defaultGame;
+function reset(_game) {
+  if (confirm("Are you sure you want to reset all progress?")) {
+    _game = JSON.parse(ls.defaultGame);
   }
+  save(_game);
+  window.location = window.location;
   return _game;
 }
