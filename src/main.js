@@ -243,19 +243,18 @@ function buyUpgrade(_upgrade, amount) {
   return true;
 }
 
-function checkForMiner (_miner) {
+function checkForMiner(_miner) {
   let item = minerOres[_miner.id];
   let child = null;
-  for(let _child of mineSelectDOM.children){
-    if(_child.value == item){
+  for (let _child of mineSelectDOM.children) {
+    if (_child.value == item) {
       child = _child;
     }
   }
-  if (!_miner.purchased){
+  if (!_miner.purchased) {
     document.querySelector(`#${item}-counter`).style.display = "none";
     child.style.display = "none";
-
-  }else{
+  } else {
     document.querySelector(`#${item}-counter`).style.display = "block";
     child.style.display = "block";
   }
@@ -264,8 +263,8 @@ function checkForMiner (_miner) {
 
 function runStoreFunctions() {
   checkAutoMine(game);
-  for(let _miner in minerOres){
-    if(game.store[_miner]){
+  for (let _miner in minerOres) {
+    if (game.store[_miner]) {
       checkForMiner(game.store[_miner]);
     }
   }
