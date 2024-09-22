@@ -1,3 +1,5 @@
+let devMode = true;
+
 let game = {
   resources: {
     rock: 0,
@@ -39,6 +41,24 @@ let game = {
     },
   },
   store: {
+    pickaxe: {
+      cost: 0,
+      hasun: true,
+      unlocked: 0,
+      name: "Pickaxe",
+      flavor: "Allows you to mine rock",
+      id: "pickaxe",
+      purchased: false,
+    },
+    rockPickaxe: {
+      cost: 100,
+      hasun: false,
+      unlocked: 50,
+      name: "Rock Pickaxe",
+      flavor: "Allows you to mine iron",
+      id: "rockPickaxe",
+      purchased: false,
+    },
     autoMine: {
       cost: 50,
       hasun: false,
@@ -61,9 +81,14 @@ const baseStats = {
 };
 
 const statIcons = {
-  speed:"&#10023;",
-  miningLuck:"&#9831;"
-}
+  speed: "&#10023;",
+  miningLuck: "&#9831;",
+};
+
+const minerOres = {
+  pickaxe: "rock",
+  rockPickaxe: "iron",
+};
 
 function execAfter(time, func) {
   let waiter = setTimeout(() => {
@@ -133,8 +158,12 @@ const renderLoop = setInterval(() => {
   renderResource(game.resources.rock, "🜘 Rock: ", rockCounterDOM);
   renderResource(game.resources.iron, "🜜 Iron: ", ironCounterDOM);
   statsDOM.innerHTML = "";
-  for(let _stat in game.stats){
-    renderStat(game.stats[_stat],statIcons[_stat],capitalizeFirstLetter(_stat));
+  for (let _stat in game.stats) {
+    renderStat(
+      game.stats[_stat],
+      statIcons[_stat],
+      capitalizeFirstLetter(_stat)
+    );
   }
 }, 50);
 
@@ -214,8 +243,32 @@ function buyUpgrade(_upgrade, amount) {
   return true;
 }
 
+function checkForMiner (_miner) {
+  let item = minerOres[_miner.id];
+  let child = null;
+  for(let _child of mineSelectDOM.children){
+    if(_child.value == item){
+      child = _child;
+    }
+  }
+  if (!_miner.purchased){
+    document.querySelector(`#${item}-counter`).style.display = "none";
+    child.style.display = "none";
+
+  }else{
+    document.querySelector(`#${item}-counter`).style.display = "block";
+    child.style.display = "block";
+  }
+  return true;
+}
+
 function runStoreFunctions() {
   checkAutoMine(game);
+  for(let _miner in minerOres){
+    if(game.store[_miner]){
+      checkForMiner(game.store[_miner]);
+    }
+  }
 }
 
 function updateStore() {
@@ -299,6 +352,16 @@ const checkStoreUnlock = setInterval(() => {
     }
   }
 }, 50);
+
+if (Notification.permission === "granted" && !devMode) {
+  const noti = new Notification("asdf");
+} else if (Notification.permission !== "denied" && !devMode) {
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      const notification = new Notification("Hi there, test noti");
+    }
+  });
+}
 
 updateUpgrades();
 updateStore();

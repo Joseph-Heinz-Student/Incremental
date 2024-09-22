@@ -23,14 +23,26 @@ function load(_game) {
 
     // if theres a general new thing from an update
     for (let thing in _game) {
-      if(gameClone[thing] == null || gameClone[thing] == "undefined"){
+      if (gameClone[thing] == null || gameClone[thing] == "undefined") {
         gameClone[thing] = _game[thing];
       }
     }
 
-    for(let upgrade in _game.upgrades) {
-      if(gameClone.upgrades[upgrade] == null || gameClone.upgrades[upgrade] == "undefined") {
+    for (let upgrade in _game.upgrades) {
+      if (
+        gameClone.upgrades[upgrade] == null ||
+        gameClone.upgrades[upgrade] == "undefined"
+      ) {
         gameClone.upgrades[upgrade] = _game.upgrades[upgrade];
+      }
+    }
+
+    for (let item in _game.store) {
+      if (
+        gameClone.store[item] == null ||
+        gameClone.store[item] == "undefined"
+      ) {
+        gameClone.store[item] = _game.store[item];
       }
     }
 
