@@ -241,8 +241,8 @@ Market styling
 }
 
 #market-resources {
-  width:100%;
-  padding:1rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 /*
@@ -343,7 +343,7 @@ console styling
   display: none;
   flex-direction: column;
   background: #111111;
-  position:absolute;
+  position: absolute;
 }
 
 .console-history {
@@ -395,13 +395,48 @@ stats styling
 */
 
 #sidebar-stats {
-  background:#555;
-  color:white;
-  padding:1rem;
-  flex-grow:1;
+  background: #555;
+  color: white;
+  padding: 1rem;
+  flex-grow: 1;
 }
 
 #stats {
-  display:flex;
+  display: flex;
   flex-direction: column;
+}
+
+/*
+extra classes
+*/
+
+.fade-up {
+  animation: fade-up 1s;
+}
+
+@keyframes fade-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-5px);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translateY(-13px);
+    opacity: 0.75;
+  }
+  60% {
+    transform: translateY(-25px);
+    opacity: 0.55;
+  }
+  80% {
+    transform: translateY(-42px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-65px);
+    opacity: 0;
+  }
 }

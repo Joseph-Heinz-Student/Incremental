@@ -5,6 +5,7 @@ const ironCounterDOM = document.querySelector("#iron-counter");
 const mineBarDOM = document.querySelector("#test");
 const mineButtonDOM = document.querySelector("#mineButton");
 const mineSelectDOM = document.querySelector("#mineSelect");
+const miningPanelDOM = document.getElementById("mining-panel");
 
 const saveTimerDOM = document.querySelector("#saveTimer");
 

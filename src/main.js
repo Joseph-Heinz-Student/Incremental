@@ -132,15 +132,28 @@ mineBar.element.addEventListener("barFill", (e) => {
     that is then divided by 100 to make it a decimal, which is then cut to 2 decimal
     places, hopefully fully preventing floating point errors
     */
+    let _add = new Decimal(chance.integer({ min: 5, max: 100 }))
+      .mul(game.stats.miningLuck)
+      .div(100)
+      .toDecimalPlaces(2);
     let _new = new Decimal(game.resources[e.srcElement.dataset.mining])
-      .plus(
-        new Decimal(chance.integer({ min: 5, max: 100 }))
-          .mul(game.stats.miningLuck)
-          .div(100)
-      )
+      .plus(_add)
       .toDecimalPlaces(2);
     // then we add a javascript number version of the new resource to the player
     game.resources[e.srcElement.dataset.mining] = Number(_new);
+
+    const x = e.offsetX;
+    const y = e.offsetY;
+
+    const div = document.createElement("div");
+    div.innerHTML = `+${Number(_add)}`;
+    div.style.cssText = `color: white; position: absolute; top: ${y}px; left: ${x}px; font-size: 15px; pointer-events: none;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;`;
+    miningPanelDOM.appendChild(div);
+    div.classList.add("fade-up");
+
+    execAfter(0.8, () => {
+      div.remove();
+    });
 
     if (autoMineCheckboxDOM.checked) {
       mine(mineSelectDOM.value);
