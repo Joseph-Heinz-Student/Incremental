@@ -90,7 +90,7 @@ let timerStart = 0;
 function writeTimer() {
   if (timerStart >= 30) {
     saveTimerDOM.innerHTML = "Game Saved!";
-    save(game);
+    save(game,market);
     setTimeout(() => {
       timerStart = 0;
       writeTimer();

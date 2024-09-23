@@ -330,15 +330,20 @@ function calculateStats() {
   }
 }
 
-for (let _trade in market.trades) {
-  renderTrade(market.trades[_trade], _trade);
-}
+function updateMarket() {
+  marketSellTableDOM.innerHTML = "";
+  marketTradeTableDOM.innerHTML = "";
+  for (let _trade in market.trades) {
+    renderTrade(market.trades[_trade], _trade);
+  }
 
-for (let _sell in market.sells) {
-  renderSell(market.sells[_sell], _sell);
+  for (let _sell in market.sells) {
+    renderSell(market.sells[_sell], _sell);
+  }
 }
 
 if (load(game) != false) game = load(game);
+if (loadMarket(market) != false) market = loadMarket(market);
 
 const checkUpgradeUnlock = setInterval(() => {
   for (let upgrade in game.upgrades) {
@@ -377,3 +382,4 @@ if (Notification.permission === "granted" && !devMode) {
 
 updateUpgrades();
 updateStore();
+updateMarket();

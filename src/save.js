@@ -1,8 +1,9 @@
 const ls = localStorage;
 
-function save(_game) {
+function save(_game, _market) {
   ls.gameSave = JSON.stringify(_game);
-  return ls.gameSave;
+  ls.marketSave = JSON.stringify(_market);
+  return ls.gameSave,ls.marketSave;
 }
 
 function load(_game) {
@@ -61,6 +62,41 @@ function load(_game) {
   }
 
   return _game;
+}
+
+function loadMarket(_market) {
+  if (
+    !ls.defaultMarket ||
+    ls.defaultMarket == null ||
+    ls.defaultMarket == "undefined"
+  ) {
+    ls.defaultMarket = JSON.stringify(_market);
+  }
+
+  if (ls.marketSave != null && ls.marketSave != "undefined") {
+    let marketClone = JSON.parse(ls.marketSave);
+
+    for (let trade in _market.trades) {
+      if (
+        marketClone.trades[trade] == null ||
+        marketClone.trades[trade] == "undefined"
+      ) {
+        marketClone.trades[trade] = _market.trades[trade];
+      }
+    }
+    for (let sell in _market.sells) {
+      if (
+        marketClone.trades[sell] == null ||
+        marketClone.trades[sell] == "undefined"
+      ) {
+        marketClone.trades[sell] = _market.trades[sell];
+      }
+    }
+    _market = marketClone;
+  } else {
+    return false;
+  }
+  return _market;
 }
 
 function reset(_game) {

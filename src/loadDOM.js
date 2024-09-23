@@ -1,27 +1,28 @@
-const moneyCounterDOM = document.querySelector("#money-counter");
-const rockCounterDOM = document.querySelector("#rock-counter");
-const ironCounterDOM = document.querySelector("#iron-counter");
+const moneyCounterDOM = document.getElementById("money-counter");
+const rockCounterDOM = document.getElementById("rock-counter");
+const ironCounterDOM = document.getElementById("iron-counter");
 
-const mineBarDOM = document.querySelector("#test");
-const mineButtonDOM = document.querySelector("#mineButton");
-const mineSelectDOM = document.querySelector("#mineSelect");
+const mineBarDOM = document.getElementById("test");
+const mineButtonDOM = document.getElementById("mineButton");
+const mineSelectDOM = document.getElementById("mineSelect");
 const miningPanelDOM = document.getElementById("mining-panel");
 
-const saveTimerDOM = document.querySelector("#saveTimer");
+const saveTimerDOM = document.getElementById("saveTimer");
 
-const marketTradeTableDOM = document.querySelector("#market-trade");
-const marketSellTableDOM = document.querySelector("#market-sell");
-const marketResourcesDOM = document.querySelector("#market-resources");
+const marketTradeTableDOM = document.getElementById("market-trade");
+const marketSellTableDOM = document.getElementById("market-sell");
+const marketResourcesDOM = document.getElementById("market-resources");
+const marketChartCanvasDOM = document.getElementById("market-chartCanvas");
 
-const upgradesDOM = document.querySelector("#upgrades");
+const upgradesDOM = document.getElementById("upgrades");
 
-const autoMineDOM = document.querySelector("#autoMine");
-const autoMineCheckboxDOM = document.querySelector("#autoMineCheckbox");
+const autoMineDOM = document.getElementById("autoMine");
+const autoMineCheckboxDOM = document.getElementById("autoMineCheckbox");
 
-const storeDOM = document.querySelector("#store");
+const storeDOM = document.getElementById("store");
 
 const consoleInput = document.querySelector(".console-input");
 const historyContainer = document.querySelector(".console-history");
 const consoleDOM = document.querySelector(".console");
 
-const statsDOM = document.querySelector("#stats");
+const statsDOM = document.getElementById("stats");
