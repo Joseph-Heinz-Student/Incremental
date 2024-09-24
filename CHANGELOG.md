@@ -1,5 +1,30 @@
 # Changelog
 
+## [v0.4.0-alpha] - 2024-09-24
+
+Large content update, mainly focused on the market
+
+### Added
+
+- Added pickaxes which the player needs to buy in order to mine a certain resource
+- Floating number after mining a resource, QOL to help the player not have to do mental math 
+- Render player stats to the sidebar
+- The market is locked until the player has `1 Rock`
+- `updateMarket` function to re-render the tables after price changes
+- Added the basis for `Notification` API to be used in the future
+- Added `Chart.js`, which display a chart of the history of the sell values of the resources
+- Added 5 modes for a price to be in:
+  - slowRise
+  - slowFall
+  - stable
+  - fastRise
+  - fastFall
+- Utility function for getting random array item
+
+### Changed
+
+- Market is no longer a const, and it gets saved to the localStorage so prices can stay and not get cheesed by reloading
+
 ## [0.3.1-alpha] - 2024-09-20
 
 Minor QOL changes
@@ -95,6 +120,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.4.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.4.0-alpha)
 
 [v0.3.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.3.1-alpha)
 
