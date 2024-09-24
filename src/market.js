@@ -3,12 +3,12 @@ let market = {
     {
       input: "rock",
       output: "iron",
-      rate: "5:1",
+      rate: "2:1",
     },
     {
       input: "iron",
       output: "rock",
-      rate: "1:5",
+      rate: "1:2",
     },
   ],
   sells: [
