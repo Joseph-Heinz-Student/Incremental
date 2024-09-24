@@ -124,13 +124,14 @@ const marketTick = setInterval(() => {
   }
   //console.log(history.sells.map((sub) => sub));
   for (let _sell in history.sells) {
-    marketChart.data.labels = history.sells[_sell].map((subArray) => [
-      `Tick ${subArray[0]}`,
-    ]);
     // get just the last 10 ticks of data
     if (history.sells[_sell].length >= 10) {
       history.sells[_sell] = history.sells[_sell].slice(-10);
     }
+
+    marketChart.data.labels = history.sells[_sell].map(
+      (subArray) => `Tick ${subArray[0]}`
+    );
   }
   // update the chart with the new costs from history
   marketChart.data.datasets = createSets();
