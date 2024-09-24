@@ -68,7 +68,7 @@ function loadMarket(_market) {
   if (
     !ls.defaultMarket ||
     ls.defaultMarket == null ||
-    ls.defaultMarket == "undefined"
+    ls.defaultMarket == "undefined" || JSON.parse(ls.defaultMarket) != _market
   ) {
     ls.defaultMarket = JSON.stringify(_market);
   }

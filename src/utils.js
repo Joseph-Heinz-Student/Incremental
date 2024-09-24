@@ -18,9 +18,14 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function getElemFromArr(arr){
-  let elem = arr[(Math.floor(Math.random() * arr.length))];
+function getElemFromArr(arr) {
+  let elem = arr[Math.floor(Math.random() * arr.length)];
   return elem;
+}
+
+function max(num1, num2) {
+  if (num1 > num2) return num1;
+  if (num1 < num2) return num2;
 }
 
 /*

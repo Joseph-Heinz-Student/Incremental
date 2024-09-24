@@ -85,7 +85,7 @@ let chance25 = [true, false, false, false];
 
 let ticks = 0;
 const marketTick = setInterval(() => {
-  if(!market.unlocked) return false;
+  if (!market.unlocked) return false;
   ticks++;
   for (let sell in market.sells) {
     let currentMode = currentModes.sells[sell];
@@ -106,6 +106,15 @@ const marketTick = setInterval(() => {
           )
         )
         .toDecimalPlaces(2)
+    );
+    // keeps the price from getting too low
+    hypoNew = max(
+      hypoNew,
+      Number(
+        new Decimal(JSON.parse(ls.defaultMarket).sells[sell].output)
+          .div(2)
+          .toDecimalPlaces(2)
+      )
     );
     // update history
     history.sells[sell].push([ticks, hypoNew]);

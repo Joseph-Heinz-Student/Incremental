@@ -180,8 +180,10 @@ const renderLoop = setInterval(() => {
   }
   if (!market.unlocked) {
     marketButton.textContent = "🔒 Market";
+    marketButton.disabled = true;
     if (game.resources.rock >= 1) {
       market.unlocked = true;
+      marketButton.disabled = false;
     }
   } else {
     marketButton.textContent = "Market";
