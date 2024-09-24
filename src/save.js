@@ -76,6 +76,12 @@ function loadMarket(_market) {
   if (ls.marketSave != null && ls.marketSave != "undefined") {
     let marketClone = JSON.parse(ls.marketSave);
 
+    for(let thing in _market){
+      if(marketClone[thing] == null || marketClone[thing] == "undefined"){
+        marketClone[thing] = _market[thing];
+      }
+    }
+
     for (let trade in _market.trades) {
       if (
         marketClone.trades[trade] == null ||

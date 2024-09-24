@@ -250,7 +250,7 @@ Market styling
   width:100%;
   flex-grow:1;
   display:flex;
-  justify-content: stretch;
+  justify-content: center;
   align-items: stretch;
 }
 

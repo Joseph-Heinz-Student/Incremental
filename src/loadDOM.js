@@ -13,6 +13,7 @@ const marketTradeTableDOM = document.getElementById("market-trade");
 const marketSellTableDOM = document.getElementById("market-sell");
 const marketResourcesDOM = document.getElementById("market-resources");
 const marketChartCanvasDOM = document.getElementById("market-chartCanvas");
+const marketButton = document.getElementById("market-tab-button");
 
 const upgradesDOM = document.getElementById("upgrades");
 

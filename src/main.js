@@ -178,6 +178,14 @@ const renderLoop = setInterval(() => {
       capitalizeFirstLetter(_stat)
     );
   }
+  if (!market.unlocked) {
+    marketButton.textContent = "🔒 Market";
+    if (game.resources.rock >= 1) {
+      market.unlocked = true;
+    }
+  } else {
+    marketButton.textContent = "Market";
+  }
 }, 50);
 
 function trade(_trade) {

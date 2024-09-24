@@ -21,6 +21,7 @@ let market = {
       output: 25,
     },
   ],
+  unlocked: false,
 };
 
 let history = {
@@ -28,6 +29,7 @@ let history = {
   sells: [[], []],
 };
 
+// create a dataset from an input of history
 function createDataSet(_input, _index) {
   let _default = {};
   _default.label = capitalizeFirstLetter(_input.input);
@@ -35,6 +37,7 @@ function createDataSet(_input, _index) {
   return _default;
 }
 
+// put all the datasets into one for the chart
 function createSets() {
   let sets = [];
   for (let sell in market.sells) {
@@ -51,6 +54,14 @@ const marketChart = new Chart(marketChartCanvasDOM, {
   },
   options: {
     responsive: true,
+    animation: {
+      duration: 0, // Disable animation to immediately reflect the new data
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
   },
 });
 Chart.defaults.borderColor = "#36A2EB";
@@ -62,6 +73,7 @@ let currentModes = {
 };
 
 let modes = ["slowRise", "slowFall", "stable", "fastRise", "fastFall"];
+// ranges for the different modes
 let modeMults = {
   slowRise: { min: 0.1, max: 5 },
   slowFall: { min: -0.1, max: -5 },
@@ -73,16 +85,19 @@ let chance25 = [true, false, false, false];
 
 let ticks = 0;
 const marketTick = setInterval(() => {
+  if(!market.unlocked) return false;
   ticks++;
   for (let sell in market.sells) {
     let currentMode = currentModes.sells[sell];
+    // update mode if 25% chance
     if (getElemFromArr(chance25)) {
       let newMode = getElemFromArr(modes);
       while (newMode == currentMode) {
         newMode = getElemFromArr(modes);
       }
-      console.log(currentMode, newMode, market.sells[sell].input);
+      //console.log(currentMode, newMode, market.sells[sell].input);
     }
+    // get new price
     let hypoNew = Number(
       new Decimal(market.sells[sell].output)
         .add(
@@ -92,17 +107,23 @@ const marketTick = setInterval(() => {
         )
         .toDecimalPlaces(2)
     );
+    // update history
     history.sells[sell].push([ticks, hypoNew]);
     market.sells[sell].output = hypoNew;
     updateMarket();
-    console.log(hypoNew, market.sells[sell]);
+    //console.log(hypoNew, market.sells[sell]);
   }
-  console.log(history.sells.map((sub) => sub));
+  //console.log(history.sells.map((sub) => sub));
   for (let _sell in history.sells) {
     marketChart.data.labels = history.sells[_sell].map((subArray) => [
       subArray[0],
     ]);
+    // get just the last 10 ticks of data
+    if (history.sells[_sell].length >= 10) {
+      history.sells[_sell] = history.sells[_sell].slice(-10);
+    }
   }
+  // update the chart with the new costs from history
   marketChart.data.datasets = createSets();
   marketChart.update();
-}, 5000);
+}, 30_000);
