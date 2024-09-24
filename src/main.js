@@ -390,6 +390,10 @@ if (Notification.permission === "granted" && !devMode) {
   });
 }
 
+saveButtonDOM.addEventListener("click", () => {
+  save(game, market);
+});
+
 updateUpgrades();
 updateStore();
 updateMarket();
