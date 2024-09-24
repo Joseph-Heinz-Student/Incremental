@@ -5,6 +5,9 @@
 ### v0.4.0-alpha
 Add market variance and requirements for trades
 
+- supply/demand
+- let players show/ hide certain chart datasets
+
 ### v0.5.0-alpha
 Add more afk/auto mining things
 (drones workers etc)
