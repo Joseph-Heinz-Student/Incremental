@@ -125,7 +125,7 @@ const marketTick = setInterval(() => {
   //console.log(history.sells.map((sub) => sub));
   for (let _sell in history.sells) {
     marketChart.data.labels = history.sells[_sell].map((subArray) => [
-      subArray[0],
+      `Tick ${subArray[0]}`,
     ]);
     // get just the last 10 ticks of data
     if (history.sells[_sell].length >= 10) {
