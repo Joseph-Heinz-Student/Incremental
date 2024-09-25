@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.4.1-alpha] - 2024-09-25
+
+Minor update to the market
+
+### Added
+
+- A save button above the save timer, so you don't have to wait for the game to save, if you have to close the tab or something
+- A very simple supply and demand system to the market, so if you start selling massive amounts of resources, the price goes down in order to mimic real life- sort of
+
+### Changed
+
+- Color of the minebar
+- Balancing changes to the rock-iron exchange rate
+- Price modes in the market now change every 10 ticks, instead of having a 25% chance every tick
+
 ## [v0.4.0-alpha] - 2024-09-24
 
 Large content update, mainly focused on the market
@@ -120,6 +135,8 @@ Minimal viable product of the minimal viable product, basically no gameplay
 - Rendering for player resource counts
 
 ## Versions
+
+[v0.4.1-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.4.1-alpha)
 
 [v0.4.0-alpha](https://github.com/Joseph-Heinz-Student/Incremental/releases/tag/v0.4.0-alpha)
 
