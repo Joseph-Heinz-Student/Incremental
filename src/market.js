@@ -55,7 +55,7 @@ const marketChart = new Chart(marketChartCanvasDOM, {
   options: {
     responsive: true,
     animation: {
-      duration: 0, // Disable animation to immediately reflect the new data
+      duration: 0.1, // Disable animation to immediately reflect the new data
     },
     plugins: {
       legend: {
@@ -89,8 +89,8 @@ const marketTick = setInterval(() => {
   ticks++;
   for (let sell in market.sells) {
     let currentMode = currentModes.sells[sell];
-    // update mode if 25% chance
-    if (getElemFromArr(chance25)) {
+    // update mode every 10 ticks
+    if (ticks % 10 == 0) {
       let newMode = getElemFromArr(modes);
       while (newMode == currentMode) {
         newMode = getElemFromArr(modes);

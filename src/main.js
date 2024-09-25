@@ -217,21 +217,51 @@ function trade(_trade) {
   return _trade;
 }
 
+// runs through the market sell listings and checks if the
+// arg is the current item
+// if so, it returns the id
+function getItemFromMarketSell(_item) {
+  for (let item in market.sells) {
+    if (
+      market.sells[item].input == _item.input &&
+      market.sells[item].output == _item.output
+    ) {
+      return [item, _item];
+    }
+  }
+  return false;
+}
+
 function sell(_sell, id) {
   if (
     game.resources[_sell.input] >=
     document.querySelector(`#market-sell-${id}-input`).value
   ) {
+    // remove items from player
     game.resources[_sell.input] -= Number(
       new Decimal(
         document.querySelector(`#market-sell-${id}-input`).value
       ).toDecimalPlaces(2)
     );
+    // give player money
     game.money += Number(
       new Decimal(document.querySelector(`#market-sell-${id}-input`).value).mul(
         _sell.output
       )
     );
+    // take money away from price - supply/demand
+    let sellId = getItemFromMarketSell(_sell)[0];
+    console.log(sellId);
+    market.sells[sellId].output = Number(
+      new Decimal(market.sells[sellId].output)
+        .sub(
+          new Decimal(0.005)
+            .mul(document.querySelector(`#market-sell-${id}-input`).value)
+            .toDecimalPlaces(2)
+        )
+        .toDecimalPlaces(2)
+    );
+    updateMarket();
   } else {
     alert(`Not enough ${capitalizeFirstLetter(_sell.input)}`);
   }
