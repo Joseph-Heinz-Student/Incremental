@@ -380,6 +380,7 @@ function updateMarket() {
   for (let _sell in market.sells) {
     renderSell(market.sells[_sell], _sell);
   }
+  renderDatasetSwitches(marketChart);
 }
 
 if (load(game) != false) game = load(game);

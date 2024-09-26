@@ -90,7 +90,7 @@ let timerStart = 0;
 function writeTimer() {
   if (timerStart >= 30) {
     saveTimerDOM.innerHTML = "Game Saved!";
-    save(game,market);
+    save(game, market);
     setTimeout(() => {
       timerStart = 0;
       writeTimer();
@@ -115,10 +115,45 @@ const renderResourcesMarket = setInterval(() => {
   }
 }, 50);
 
-function renderStat(_stat,icon,name) {
+function renderStat(_stat, icon, name) {
   statsDOM.innerHTML += `
-    <span>${icon} ${name}: ${new numeral(new Decimal( _stat )).format("0[.]00%")}</span>
-  `
+    <span>${icon} ${name}: ${new numeral(new Decimal(_stat)).format(
+    "0[.]00%"
+  )}</span>
+  `;
+}
+
+function renderDatasetSwitches(chart) {
+  datasetButtonsDOM.innerHTML = "";
+  let datasets = chart.data.datasets;
+  for (let dataset in datasets) {
+    let divElement = document.createElement("div");
+    divElement.id = `dataset-switch-${dataset}`;
+    divElement.classList.add("dataset-switch");
+    let inputElement = document.createElement("input");
+    inputElement.type = "checkbox";
+    inputElement.id = `dataset-switch-input-${dataset}`;
+    inputElement.checked = true;
+    chart.data.datasets[dataset].hidden = false;
+    inputElement.onchange = function () {
+      console.log(chart.data.datasets[dataset])
+      if(
+      chart.data.datasets[dataset].hidden){
+
+        chart.data.datasets[dataset].hidden = false;
+      } else {
+        chart.data.datasets[dataset].hidden = true;
+      }
+      chart.update();
+    };
+    let textName = document.createElement("span");
+    textName.textContent = chart.data.datasets[dataset].label;
+    divElement.appendChild(inputElement);
+    divElement.appendChild(textName);
+    datasetButtonsDOM.appendChild(divElement);
+  }
+  chart.update();
+  return true;
 }
 
 writeTimer();

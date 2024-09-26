@@ -21,7 +21,11 @@
         >
           Mine
         </button>
-        <button id="market-tab-button" class="tablink" onclick="openPage('Market', this, '#f34949')">
+        <button
+          id="market-tab-button"
+          class="tablink"
+          onclick="openPage('Market', this, '#f34949')"
+        >
           Market
         </button>
         <button class="tablink" onclick="openPage('News', this, '#278a27')">
@@ -70,6 +74,7 @@
         </section>
         <div id="market-chart">
           <canvas id="market-chartCanvas"></canvas>
+          <div id="datasetButtons"></div>
         </div>
       </div>
 
@@ -93,7 +98,7 @@
             <div
               id="test"
               class="progress-bar"
-              style="--bg-color: #c47d21;"
+              style="--bg-color: #c47d21"
               data-value="100"
               data-max="100"
               data-mining="none"
