@@ -124,7 +124,7 @@ function renderStat(_stat, icon, name) {
 }
 
 function renderDatasetSwitches(chart) {
-  datasetButtonsDOM.innerHTML = "";
+  let arr = [];
   let datasets = chart.data.datasets;
   for (let dataset in datasets) {
     let divElement = document.createElement("div");
@@ -132,14 +132,20 @@ function renderDatasetSwitches(chart) {
     divElement.classList.add("dataset-switch");
     let inputElement = document.createElement("input");
     inputElement.type = "checkbox";
+    // check for previous check mark for continuity\
+    console.log(datasets[dataset]);
+    if (datasets[dataset].data.length < 1) {
+      inputElement.checked = true;
+    } else {
+      inputElement.checked = document.getElementById(
+        `dataset-switch-input-${dataset}`
+      ).checked;
+    }
     inputElement.id = `dataset-switch-input-${dataset}`;
-    inputElement.checked = true;
-    chart.data.datasets[dataset].hidden = false;
+    chart.data.datasets[dataset].hidden = !inputElement.checked || false;
     inputElement.onchange = function () {
-      console.log(chart.data.datasets[dataset])
-      if(
-      chart.data.datasets[dataset].hidden){
-
+      console.log(chart.data.datasets[dataset]);
+      if (chart.data.datasets[dataset].hidden) {
         chart.data.datasets[dataset].hidden = false;
       } else {
         chart.data.datasets[dataset].hidden = true;
@@ -150,7 +156,13 @@ function renderDatasetSwitches(chart) {
     textName.textContent = chart.data.datasets[dataset].label;
     divElement.appendChild(inputElement);
     divElement.appendChild(textName);
-    datasetButtonsDOM.appendChild(divElement);
+    // cache the div element
+    arr.push(divElement);
+    //datasetButtonsDOM.appendChild(divElement);
+  }
+  datasetButtonsDOM.innerHTML = "";
+  for (let _div in arr) {
+    datasetButtonsDOM.appendChild(arr[_div]);
   }
   chart.update();
   return true;

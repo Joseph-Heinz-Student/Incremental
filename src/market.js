@@ -119,7 +119,7 @@ const marketTick = setInterval(() => {
     // update history
     history.sells[sell].push([ticks, hypoNew]);
     market.sells[sell].output = hypoNew;
-    updateMarket();
+
     //console.log(hypoNew, market.sells[sell]);
   }
   //console.log(history.sells.map((sub) => sub));
@@ -136,4 +136,5 @@ const marketTick = setInterval(() => {
   // update the chart with the new costs from history
   marketChart.data.datasets = createSets();
   marketChart.update();
+  updateMarket();
 }, 30_000);
