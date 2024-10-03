@@ -133,7 +133,7 @@ function renderDatasetSwitches(chart) {
     let inputElement = document.createElement("input");
     inputElement.type = "checkbox";
     // check for previous check mark for continuity\
-    console.log(datasets[dataset]);
+    //console.log(datasets[dataset]);
     if (datasets[dataset].data.length < 1) {
       inputElement.checked = true;
     } else {
@@ -144,7 +144,7 @@ function renderDatasetSwitches(chart) {
     inputElement.id = `dataset-switch-input-${dataset}`;
     chart.data.datasets[dataset].hidden = !inputElement.checked || false;
     inputElement.onchange = function () {
-      console.log(chart.data.datasets[dataset]);
+      //console.log(chart.data.datasets[dataset]);
       if (chart.data.datasets[dataset].hidden) {
         chart.data.datasets[dataset].hidden = false;
       } else {

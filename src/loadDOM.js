@@ -9,6 +9,7 @@ const miningPanelDOM = document.getElementById("mining-panel");
 
 const saveTimerDOM = document.getElementById("saveTimer");
 const saveButtonDOM = document.getElementById("sidebarSaveButton");
+const exportButtonDOM = document.getElementById("sidebarExportButton");
 
 const marketTradeTableDOM = document.getElementById("market-trade");
 const marketSellTableDOM = document.getElementById("market-sell");

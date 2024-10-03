@@ -411,6 +411,17 @@ const checkStoreUnlock = setInterval(() => {
   }
 }, 50);
 
+function exportGame(_input) {
+  let _output = btoa(JSON.stringify(_input));
+  try {
+    window.navigator.clipboard.writeText(_output);
+    alert("Copied Game to Clipboard");
+  } catch (err) {
+    console.error(err);
+  }
+  return true;
+}
+
 if (Notification.permission === "granted" && !devMode) {
   const noti = new Notification("asdf");
 } else if (Notification.permission !== "denied" && !devMode) {
@@ -423,6 +434,10 @@ if (Notification.permission === "granted" && !devMode) {
 
 saveButtonDOM.addEventListener("click", () => {
   save(game, market);
+});
+
+exportButtonDOM.addEventListener("click", () => {
+  exportGame(game);
 });
 
 updateUpgrades();
