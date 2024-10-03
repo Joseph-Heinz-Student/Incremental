@@ -18,6 +18,10 @@ let market = {
     },
     {
       input: "iron",
+      output: 50,
+    },
+    {
+      input: "copper",
       output: 25,
     },
   ],
@@ -26,7 +30,7 @@ let market = {
 
 let history = {
   trades: [],
-  sells: [[], []],
+  sells: [[], [], []],
 };
 
 // create a dataset from an input of history

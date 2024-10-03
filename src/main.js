@@ -4,6 +4,7 @@ let game = {
   resources: {
     rock: 0,
     iron: 0,
+    copper: 0,
   },
   money: 0,
   upgrades: {
@@ -55,8 +56,17 @@ let game = {
       hasun: false,
       unlocked: 50,
       name: "Rock Pickaxe",
-      flavor: "Allows you to mine iron",
+      flavor: "Allows you to mine copper",
       id: "rockPickaxe",
+      purchased: false,
+    },
+    copperPickaxe: {
+      cost: 250,
+      hasun: false,
+      unlocked: 200,
+      name: "Copper Pickaxe",
+      flavor: "Allows you to mine iron",
+      id: "copperPickaxe",
       purchased: false,
     },
     autoMine: {
@@ -87,7 +97,8 @@ const statIcons = {
 
 const minerOres = {
   pickaxe: "rock",
-  rockPickaxe: "iron",
+  rockPickaxe: "copper",
+  copperPickaxe: "iron",
 };
 
 function execAfter(time, func) {
@@ -170,6 +181,7 @@ const renderLoop = setInterval(() => {
   renderResource(game.money, "Money: $", moneyCounterDOM);
   renderResource(game.resources.rock, "🜘 Rock: ", rockCounterDOM);
   renderResource(game.resources.iron, "🜜 Iron: ", ironCounterDOM);
+  renderResource(game.resources.copper, "🜠 Copper: ", copperCounterDOM);
   statsDOM.innerHTML = "";
   for (let _stat in game.stats) {
     renderStat(

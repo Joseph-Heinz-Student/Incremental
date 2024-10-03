@@ -1,6 +1,7 @@
 const moneyCounterDOM = document.getElementById("money-counter");
 const rockCounterDOM = document.getElementById("rock-counter");
 const ironCounterDOM = document.getElementById("iron-counter");
+const copperCounterDOM = document.getElementById("copper-counter");
 
 const mineBarDOM = document.getElementById("test");
 const mineButtonDOM = document.getElementById("mineButton");
